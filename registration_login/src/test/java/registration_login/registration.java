@@ -2,6 +2,11 @@ package registration_login;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+
+import java.io.IOException;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,24 +18,23 @@ import org.testng.annotations.AfterClass;
    
 public class registration {
 	WebDriver chd;
-  @Test
-  public void sign_in() {
+  @Test(dataProvider ="test_data" )
+  public void sign_in(String firstname, String lastname,String Email,String password ) {
+	  chd.findElement(By.linkText("register")).click();   
+	  chd.manage().window().maximize();
+      chd.findElement(By.id("firstname")).sendKeys(firstname);
+	  chd.findElement(By.id("lastname")).sendKeys(lastname);
+	  chd.findElement(By.id("Email")).sendKeys(Email);
+	  chd.findElement(By.name("password")).sendKeys(password); 
 	  
 	  
-	  chd.findElement(By.linkText("Signup")).click();  
-      chd.findElement(By.name("first_name")).sendKeys("zalbouka");
-	  chd.findElement(By.name("last_name")).sendKeys("bouka");
-	  chd.findElement(By.name("phone")).sendKeys("27823600");
-	  chd.findElement(By.name("email")).sendKeys("zalbouka@gmail.com");
-	  chd.findElement(By.name("password")).sendKeys("zalbouka"); 
-	  
-	  
-	  WebElement submit_btn=chd.findElement(By.xpath("//*[@id=\"fadein\"]/div[1]/div/div[2]/div[2]/div/form/div[7]/button"));
+	  WebElement submit_btn=chd.findElement(By.xpath("//*[@id=\"EMAIL_REG_FORM_SUBMIT\"]"));
 	  JavascriptExecutor js=(JavascriptExecutor)chd;
 	  js.executeScript("arguments[0].scrollIntoView(true);", submit_btn);
 	  WebDriverWait wait=new WebDriverWait(chd, 20);
-	  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"fadein\"]/div[1]/div/div[2]/div[2]/div/form/div[7]/button")));
+	  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"EMAIL_REG_FORM_SUBMIT\"]")));
 	  submit_btn.click();
+	  chd.findElement(By.linkText("Sign out")).click();  
   
   }
   
@@ -38,12 +42,20 @@ public class registration {
   public void beforeClass() {
 	  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
 	  chd=new ChromeDriver();
-	  chd.get("https://phptravels.net/");  
+	  chd.get("https://www.ebay.com/");  
   }
 
   @AfterClass
   public void afterClass() {
 	 // chd.quit();
+  }
+  @DataProvider
+  public String[][] test_data() throws InvalidFormatException, IOException {
+	  
+	  Read_excel_data obj=new Read_excel_data();
+	  return obj.read_sheet();
+	  
+	  
   }
 
 }
