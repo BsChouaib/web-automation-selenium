@@ -7,3 +7,10 @@ https://codepen.io/
 symantec 
 https://github.com/soufiane-fadil/angular-material-dashboard
 https://chakra-templates.dev/
+
+https://angular-material.fusetheme.com/dashboards/finance
+
+
+https://www.highcharts.com/demo/pie-basic
+
+https://www.akveo.com/ngx-admin/pages/dashboard?theme=material-dark
