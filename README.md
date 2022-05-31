@@ -14,3 +14,10 @@ https://angular-material.fusetheme.com/dashboards/finance
 https://www.highcharts.com/demo/pie-basic
 
 https://www.akveo.com/ngx-admin/pages/dashboard?theme=material-dark
+
+
+
+
+
+
+https://www.youtube.com/watch?v=2Bz5BsbpZvo&ab_channel=Codeible:popup detail
