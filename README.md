@@ -21,3 +21,6 @@ https://www.akveo.com/ngx-admin/pages/dashboard?theme=material-dark
 
 
 https://www.youtube.com/watch?v=2Bz5BsbpZvo&ab_channel=Codeible:popup detail
+
+
+https://github.com/swimlane/ngx-charts ngxcard
